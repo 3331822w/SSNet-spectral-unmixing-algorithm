@@ -123,22 +123,18 @@ class U_Net(nn.Module):
         self.Up5 = up_conv(filters[4], filters[3], sizes[3])
         self.Up_conv5 = conv_block(filters[4], filters[3])
         self.Se_Bk5 = se_block(filters[4])
-        self.CBAM5 = CBAMLayer(filters[4])
 
         self.Up4 = up_conv(filters[3], filters[2], sizes[2])
         self.Up_conv4 = conv_block(filters[3], filters[2])
         self.Se_Bk4 = se_block(filters[3])
-        self.CBAM4 = CBAMLayer(filters[3])
 
         self.Up3 = up_conv(filters[2], filters[1], sizes[1])
         self.Up_conv3 = conv_block(filters[2], filters[1])
         self.Se_Bk3 = se_block(filters[2])
-        self.CBAM3 = CBAMLayer(filters[2])
 
         self.Up2 = up_conv(filters[1], filters[0], sizes[0])
         self.Up_conv2 = conv_block(filters[1], filters[0])
         self.Se_Bk2 = se_block(filters[1])
-        self.CBAM2 = CBAMLayer(filters[1])
 
         self.Conv = nn.Conv1d(filters[0], out_ch, kernel_size=1, stride=1, padding='same')
 
@@ -224,3 +220,4 @@ class U_Net(nn.Module):
 
 def Unet(size):
     return U_Net(1, 1, size)
+
