@@ -180,7 +180,6 @@ class U_Net(nn.Module):
 
         d5 = torch.cat((e4, d5), dim=1)
         d5 = self.Se_Bk5(d5)
-        # d5 = self.CBAM5(d5)
         d5 = self.Up_conv5(d5)
 
         d4 = self.Up4(d5)
@@ -190,7 +189,6 @@ class U_Net(nn.Module):
 
         d4 = torch.cat((e3, d4), dim=1)
         d4 = self.Se_Bk4(d4)
-        # d4 = self.CBAM4(d4)
         d4 = self.Up_conv4(d4)
 
         d3 = self.Up3(d4)
@@ -200,7 +198,6 @@ class U_Net(nn.Module):
 
         d3 = torch.cat((e2, d3), dim=1)
         d3 = self.Se_Bk3(d3)
-        # d3 = self.CBAM3(d3)
         d3 = self.Up_conv3(d3)
 
         d2 = self.Up2(d3)
@@ -210,7 +207,6 @@ class U_Net(nn.Module):
 
         d2 = torch.cat((e1, d2), dim=1)
         d2 = self.Se_Bk2(d2)
-        # d2 = self.CBAM2(d2)
         d2 = self.Up_conv2(d2)
 
         out = self.Conv(d2)
@@ -220,4 +216,5 @@ class U_Net(nn.Module):
 
 def Unet(size):
     return U_Net(1, 1, size)
+
 
